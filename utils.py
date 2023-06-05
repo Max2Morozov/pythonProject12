@@ -6,3 +6,7 @@ def get_data():
         data = json.load(file)
     return data
 '''Получаем список словарей'''
+
+def filter_data(data):
+    for value in data:
+        print(value['state'])

@@ -6,7 +6,10 @@ def main(name):
     data = get_data()
     print("OK")
 
+    print('Фильтрация транзакций... ', end='')
     data = filter_data(data)
+    print("OK")
+
 
 
 

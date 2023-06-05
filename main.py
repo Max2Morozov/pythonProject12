@@ -1,4 +1,4 @@
-from utils import get_data, filter_data
+from utils import get_data, filter_data, sort_data
 
 
 def main(name):
@@ -8,6 +8,10 @@ def main(name):
 
     print('Фильтрация транзакций... ', end='')
     data = filter_data(data)
+    print("OK")
+
+    print('Сортировка транзакций... ', end='')
+    data = sort_data(data)
     print("OK")
 
 

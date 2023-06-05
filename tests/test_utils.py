@@ -1,4 +1,6 @@
-from utils import sort_data
+import os
+
+from utils import sort_data, filter_data, get_data
 
 
 def test_sort_data(test_data):
@@ -13,3 +15,43 @@ def test_sort_data(test_data):
     assert [x['date'] for x in sorted_data] == \
            ['2019-08-26T10:50:58.294041',
             '2019-07-03T18:35:29.512364', '2018-06-30T02:08:58.425572', '2018-03-23T10:45:06.972075']
+
+
+    def test_load_data():
+        assert get_data(os.path.abspath('operation_file.json')) == []
+        assert get_data(os.path.abspath('test_operations.json')) == [
+            {
+                "id": 441945886,
+                "state": "EXECUTED",
+                "date": "2019-08-26T10:50:58.294041",
+                "operationAmount": {
+                    "amount": "31957.58",
+                    "currency": {
+                        "name": "руб.",
+                        "code": "RUB"
+                    }
+                },
+                "description": "Перевод организации",
+                "from": "Maestro 1596837868705199",
+                "to": "Счет 64686473678894779589"
+            },
+            {
+                "id": 41428829,
+                "state": "EXECUTED",
+                "date": "2019-07-03T18:35:29.512364",
+                "operationAmount": {
+                    "amount": "8221.37",
+                    "currency": {
+                        "name": "USD",
+                        "code": "USD"
+                    }
+                },
+                "description": "Перевод организации",
+                "from": "MasterCard 7158300734726758",
+                "to": "Счет 35383033474447895560"
+            },
+        ]
+
+    def test_sorted_by_state(tested_data):
+        sort_by_state = filter_data(tested_data)
+        assert [x['state'] for x in sort_by_state if x['state'] == 'EXECUTED'] == ['EXECUTED', 'EXECUTED']

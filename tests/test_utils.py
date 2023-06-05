@@ -15,8 +15,8 @@ def test_sort_data(test_data):
            ['2019-08-26T10:50:58.294041',
             '2019-07-03T18:35:29.512364', '2018-06-30T02:08:58.425572', '2018-03-23T10:45:06.972075']
     def test_load_data():
-        assert get_data(os.path.abspath('operation_file.json')) == []
-        assert get_data(os.path.abspath('test_operations.json')) == [
+        assert get_data(os.path('operation_file.json')) == []
+        assert get_data(os.path('test_operations.json')) == [
             {
                 "id": 441945886,
                 "state": "EXECUTED",
@@ -49,8 +49,8 @@ def test_sort_data(test_data):
             },
         ]
 
-    def test_sorted_by_state(tested_data):
-        sort_by_state = filter_data(tested_data)
+    def test_sorted_by_state(test_data):
+        sort_by_state = filter_data(test_data)
         assert [x['state'] for x in sort_by_state if x['state'] == 'EXECUTED'] == ['EXECUTED', 'EXECUTED']
 
     def test_format_data():

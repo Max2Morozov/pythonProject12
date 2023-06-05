@@ -1,7 +1,7 @@
 from utils import get_data, filter_data, sort_data, format_data
 
 
-def main(name):
+def main():
     #Получение данных из файла
     data = get_data()
 
@@ -17,7 +17,4 @@ def main(name):
     for row in data:
         print(row)
 
-
-
-#if __name__ == '__main__':
-    #main()
+main()

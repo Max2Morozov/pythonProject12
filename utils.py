@@ -28,7 +28,7 @@ def format_data(data):
     formatted_data =[]
     for row in data:
         #"2019-07-13T18:51:29.313309"
-        date = datetime.strftime(row['date'], '%Y-%m-%dT%H:%M:%S.%f').strftime("%d.%m.%Y")
+        date = datetime.strptime(row['date'], '%Y-%m-%dT%H:%M:%S.%f').strftime('%d.%m.%Y')
         # сжатие данных в необходимый нам формат данных
         description = row['description']
         if "from" in row: #проверка транзакций, куда ведет стрелка
@@ -49,7 +49,7 @@ def format_data(data):
         bill_info = ' '.join(send_bill)
         bill = f'**{bill[-4:]}'
         operation_sum = row['operationAmount']['amount']
-        operation_currency = row['operationAmount']['currency']
+        operation_currency = row['operationAmount']['currency']['name']
 
         formatted_data.append(f"""
 {date} {description}

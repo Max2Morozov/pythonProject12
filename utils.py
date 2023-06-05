@@ -37,19 +37,19 @@ def format_data(data):
             sender_bill = sender.pop(-1) #забираем последнее значение (счет), знаем что оно верное
             sender_info = " ".join(sender) #знаем, что тут информация о счете
             sender_bill = f"{sender_bill[:4]} {sender_bill[4:6]}** **** {sender_bill[-4:]}" #данные о карте
-            send_bill = row['to'].split() #сведения о счете
-            bill = send_bill.pop(-1)
-            bill_info = ' '.join(send_bill)
-            bill = f'**{bill[-4:]}'
 
-            operation_sum = row['operationAmount']['amount']
-            operation_currency = row['operationAmount']['currency']
 
 
         else:
             sender_info = "Новый счет"
             sender_bill = ""
             from_arrow = ""
+        send_bill = row['to'].split()  # сведения о счете
+        bill = send_bill.pop(-1)
+        bill_info = ' '.join(send_bill)
+        bill = f'**{bill[-4:]}'
+        operation_sum = row['operationAmount']['amount']
+        operation_currency = row['operationAmount']['currency']
 
         formatted_data.append(f"""
 {date} {description}

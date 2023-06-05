@@ -49,9 +49,9 @@ def test_load_data():
             },
         ]
 
-    def test_sorted_by_state(tested_data):
-        sort_by_state = filter_data(tested_data)
-        assert [x['state'] for x in sort_by_state if x['state'] == 'EXECUTED'] == ['EXECUTED', 'EXECUTED']
+def test_sorted_by_state(test_data):
+    sort_by_state = filter_data(test_data)
+    assert [x['state'] for x in sort_by_state if x['state'] == 'EXECUTED'] == ['EXECUTED', 'EXECUTED', 'EXECUTED', 'EXECUTED']
 
     def test_format_data():
         assert format_data([{

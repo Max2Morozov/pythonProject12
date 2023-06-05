@@ -1,19 +1,25 @@
-from utils import get_data, filter_data, sort_data
+from utils import get_data, filter_data, sort_data, format_data
 
 
 def main(name):
-    print('Получение данных из файла... ', end='')
+    #print('Получение данных из файла... ', end='')
     data = get_data()
-    print("OK")
+    #print("OK")
 
-    print('Фильтрация транзакций... ', end='')
+    #print('Фильтрация транзакций... ', end='')
     data = filter_data(data)
-    print("OK")
+    #print("OK")
 
-    print('Сортировка транзакций... ', end='')
+    #print('Сортировка транзакций... ', end='')
     data = sort_data(data)
-    print("OK")
+    #print("OK")
 
+    #print('Проверка дат и счета и стрелок... ', end='')
+    data = format_data(data)
+    #print("OK")
+
+    for row in data:
+        print(row)
 
 
 

@@ -2,11 +2,14 @@ import json
 import os
 from datetime import datetime
 
-def get_data():
+def get_data(path):
     '''Получаем список словарей'''
-    with open('operations.json', 'r', encoding='utf-8') as file:
+    if not os.path.exists(path):
+        return []
+
+    with open(path, 'r', encoding='utf-8') as file:
         data = json.load(file)
-    return data
+        return data
 
 
 def filter_data(data):

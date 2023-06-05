@@ -9,6 +9,6 @@ def get_data():
 
 
 def filter_data(data):
-    '''Проверяем значение EXECUTED'''
+    '''Проверяем значение EXECUTED и если в x нет значение, его отбрасываем.'''
     data = [x for x in data if 'state' in x and x['state'] == 'EXECUTED']
     return data

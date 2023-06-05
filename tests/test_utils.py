@@ -2,6 +2,9 @@ from utils import sort_data
 
 
 def test_sort_data(test_data):
+    '''test_data это список из conftest, для теста. Мы передаем этот список в функцию
+    и получаем сортированный список значений. И date находиться в определенном порядке, список 2019-08-26 и тд.
+    '''
     #for z in test_data:
         #print(z['date'])
     sorted_data = sort_data(test_data)

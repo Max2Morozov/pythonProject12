@@ -31,14 +31,20 @@ def format_data(data):
         date = datetime.strftime(row['date'], '%Y-%m-%dT%H:%M:%S.%f').strftime("%d.%m.%Y")
         # сжатие данных в необходимый нам формат данных
         description = row['description']
-        sender = row['from'].split() #значение VISA или Classic
-        sender_bill = sender.pop(-1) #забираем последнее значение (счет), знаем что оно верное
-        sender_info = " ".join(sender) #знаем, что тут информация о счете
-        sender_bill = f"{sender_bill[:4]} {sender_bill[4:6]}** **** {sender_bill[-4:]}"
+        if "from" in row: #проверка транзакций, куда ведет стрелка
+            from_arrow = "->"
+            sender = row['from'].split() #значение VISA или Classic
+            sender_bill = sender.pop(-1) #забираем последнее значение (счет), знаем что оно верное
+            sender_info = " ".join(sender) #знаем, что тут информация о счете
+            sender_bill = f"{sender_bill[:4]} {sender_bill[4:6]}** **** {sender_bill[-4:]}"
+        else:
+            sender_info = ""
+            sender_bill = ""
+            from_arrow = ""
 
         formatted_data.append(f"""
 {date} {description}
-{sender_info} {sender_bill}
+{sender_info} {sender_bill} {from_arrow}
         """)
     return formatted_data
 

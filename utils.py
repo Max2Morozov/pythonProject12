@@ -14,6 +14,6 @@ def filter_data(data):
     return data
 
 def sort_data(data):
-    '''Сортировка транзакций через лямда функцию, EXECUTED и если в x нет значение, его отбрасываем.'''
+    '''Сортировка транзакций через лямда функцию, списком дату '''
     data = sorted(data, key=lambda x: x['data'], reverse=True)
     return data[:5]

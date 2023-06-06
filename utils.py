@@ -55,10 +55,8 @@ def format_data(data):
         operation_sum = row['operationAmount']['amount']
         operation_currency = row['operationAmount']['currency']['name']
 
-        formatted_data.append(f"""
-{date} {description}
+        formatted_data.append(f"""{date} {description}
 {sender_info} {sender_bill} {from_arrow} {bill_info} {bill}
-{operation_sum} {operation_currency}
-        """)
+{operation_sum} {operation_currency}""")
     return formatted_data
 
